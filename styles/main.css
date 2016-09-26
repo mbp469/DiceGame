@@ -1,45 +1,52 @@
 #container {
-    background: lightgray;
-    height: 60vh;
-    width: 100vw;
-}
+  background: lightgray;
+  height: 60vh;
+  width: 100vw; }
 
 #dice-box {
-    background: white;
-    border-radius: 3%;
-    border: 1px solid black;
-    position: relative;
-    height: 57vh;
-    width: 96vw;
-    top: 1vh;
-    left: 2vw;
-}
+  background: white;
+  border-radius: 3%;
+  border: 1px solid black;
+  position: relative;
+  height: 57vh;
+  width: 96vw;
+  top: 1vh;
+  left: 2vw; }
 
 #notice {
-    text-align: center;
-    font-weight: bold;
-    padding-top: 3vh;
-}
+  text-align: center;
+  font-weight: bold;
+  margin: 3vh auto; }
 
 #tries-message {
   text-align: center;
-  font-size: 0.8em;
-}
+  font-size: 0.8em; }
 
 .di {
   position: absolute;
   border: 2px solid black;
   height: 80px;
   width: 80px;
-  top: 19vh;
-}
+  top: 19vh; }
+
 #di-1 {
-  left: 14vw;
-}
+  left: 14vw; }
+
 #di-2 {
-  right: 14vw;
-}
+  right: 14vw; }
 
+#roll {
+  position: absolute;
+  border-radius: 18px;
+  background: gray;
+  color: white;
+  height: 46px;
+  width: 112px;
+  top: 38vh;
+  left: 36vw; }
 
+#start-time {
+  text-align: center;
+  padding-top: 32vh; }
 
 /*# sourceMappingURL=main.css.map */
