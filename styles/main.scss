@@ -22,6 +22,7 @@
     }
 
     #tries-message {
+      visibility: hidden;
       text-align: center;
       font-size: 0.8em;
     }
@@ -51,7 +52,8 @@
 
     }
     #start-time {
+      position: absolute;
       text-align: center;
-      padding-top: 32vh;
-
+      top: 49vh;
+      left: 39vw;
     }

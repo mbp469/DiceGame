@@ -19,6 +19,7 @@
   margin: 3vh auto; }
 
 #tries-message {
+  visibility: hidden;
   text-align: center;
   font-size: 0.8em; }
 
@@ -46,7 +47,9 @@
   left: 36vw; }
 
 #start-time {
+  position: absolute;
   text-align: center;
-  padding-top: 32vh; }
+  top: 49vh;
+  left: 39vw; }
 
 /*# sourceMappingURL=main.css.map */
