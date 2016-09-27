@@ -17,7 +17,14 @@
   text-align: center;
   font-weight: bold;
   margin: 7vh auto;
-  font-size: 2em; }
+  font-size: 2em;
+  text-shadow: 2px 2px 2px gray; }
+  @media only screen and (min-width: 768px) {
+    #notice {
+      font-size: 5em; } }
+  @media only screen and (min-width: 1024px) {
+    #notice {
+      font-size: 4em; } }
 
 #tries-message {
   visibility: hidden;
@@ -26,6 +33,14 @@
   position: absolute;
   top: 14vh;
   left: 17vw; }
+  @media only screen and (min-width: 768px) {
+    #tries-message {
+      font-size: 1.75em;
+      top: 20vh; } }
+  @media only screen and (min-width: 1024px) {
+    #tries-message {
+      top: 20vh;
+      left: 27vw; } }
 
 .di {
   position: absolute;
@@ -36,13 +51,30 @@
   top: 29vh;
   box-shadow: 10px 20px 5px gray;
   border-radius: 7px;
-  font-size: 1.75em; }
+  font-size: 1.75em;
+  text-shadow: 4px 3px 5px gray; }
+  @media only screen and (min-width: 768px) {
+    .di {
+      height: 150px;
+      width: 150px;
+      font-size: 3em; } }
+  @media only screen and (min-width: 1024px) {
+    .di {
+      height: 150px;
+      width: 150px;
+      font-size: 3em; } }
 
 #di-1 {
-  left: 14vw; }
+  left: 24vw; }
+  @media only screen and (min-width: 1024px) {
+    #di-1 {
+      left: 20vw; } }
 
 #di-2 {
-  right: 14vw; }
+  right: 24vw; }
+  @media only screen and (min-width: 1024px) {
+    #di-2 {
+      right: 20vw; } }
 
 #roll {
   font-size: 1em;
@@ -53,17 +85,41 @@
   height: 66px;
   width: 155px;
   top: 65vh;
-  left: 24vw;
+  left: 26vw;
   box-shadow: 4px 8px 2px black;
-  text-align: center; }
+  text-align: center;
+  text-shadow: 2px 2px 2px black; }
   #roll:active {
     transform: translate(20px 20px);
     box-shadow: none; }
+  @media only screen and (min-width: 768px) {
+    #roll {
+      height: 100px;
+      width: 255px;
+      font-size: 2em;
+      left: 32vw; } }
+  @media only screen and (min-width: 1024px) {
+    #roll {
+      height: 90px;
+      width: 219px;
+      font-size: 2em;
+      left: 36vw;
+      top: 63vh; } }
 
 #start-time {
   position: absolute;
   text-align: center;
   top: 89vh;
   left: 16vw; }
+  @media only screen and (min-width: 768px) {
+    #start-time {
+      font-size: 2em;
+      left: 20vw; } }
+  @media only screen and (min-width: 1024px) {
+    #start-time {
+      font-size: 2em;
+      font-style: italic;
+      left: 35vw;
+      top: 87vh; } }
 
 /*# sourceMappingURL=main.css.map */

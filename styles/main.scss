@@ -1,11 +1,12 @@
+@import "partials/mixins";
 
 #container {
-  background: lightgray;
-  height: 100vh;
-  width: 100vw;
+    background: lightgray;
+    height: 100vh;
+    width: 100vw;
 }
 
-  #dice-box {
+#dice-box {
     background: white;
     border-radius: 3%;
     border: 1px solid black;
@@ -14,63 +15,121 @@
     width: 96vw;
     top: 1vh;
     left: 2vw;
+}
 
-  }
-    #notice {
-      text-align: center;
-      font-weight: bold;
-      margin: 7vh auto;
-      font-size: 2em;
+#notice {
+    text-align: center;
+    font-weight: bold;
+    margin: 7vh auto;
+    font-size: 2em;
+    text-shadow: 2px 2px 2px gray;
+    @include tablet {
+        font-size: 5em;
     }
+    @include desktop {
+      font-size: 4em;
+    }
+}
 
-    #tries-message {
-      visibility: hidden;
-      text-align: center;
-      font-size: 0.8em;
-      position: absolute;
-      top:14vh;
-      left:17vw;
+#tries-message {
+    visibility: hidden;
+    text-align: center;
+    font-size: 0.8em;
+    position: absolute;
+    top: 14vh;
+    left: 17vw;
+    @include tablet {
+        font-size: 1.75em;
+        top: 20vh;
     }
+    @include desktop {
+      top:20vh;
+      left:27vw;
+    }
+}
 
-    .di {
-      position: absolute;
-      text-align: center;
-      border: 2px solid black;
-      height: 80px;
-      width: 80px;
-      top: 29vh;
-      box-shadow: 10px 20px 5px gray;
-      border-radius: 7px;
-      font-size: 1.75em;
+.di {
+    position: absolute;
+    text-align: center;
+    border: 2px solid black;
+    height: 80px;
+    width: 80px;
+    top: 29vh;
+    box-shadow: 10px 20px 5px gray;
+    border-radius: 7px;
+    font-size: 1.75em;
+    text-shadow: 4px 3px 5px gray;
+    @include tablet {
+        height: 150px;
+        width: 150px;
+        font-size: 3em;
     }
-    #di-1 {
-      left: 14vw;
+    @include desktop {
+      height: 150px;
+      width: 150px;
+      font-size: 3em;
     }
-    #di-2 {
-      right: 14vw;
+}
+
+#di-1 {
+    left: 24vw;
+    @include desktop {
+      left: 20vw;
     }
-    #roll {
-      font-size: 1em;
-      position: absolute;
-      border-radius: 18px;
-      background: gray;
-      color: white;
-      height: 66px;
-      width: 155px;
-      top: 65vh;
-      left: 24vw;
-      box-shadow: 4px 8px 2px black;
-      text-align: center;
-      &:active {
+}
+
+#di-2 {
+    right: 24vw;
+    @include desktop {
+      right: 20vw;
+    }
+}
+
+#roll {
+    font-size: 1em;
+    position: absolute;
+    border-radius: 18px;
+    background: gray;
+    color: white;
+    height: 66px;
+    width: 155px;
+    top: 65vh;
+    left: 26vw;
+    box-shadow: 4px 8px 2px black;
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    &:active {
         transform: translate(20px 20px);
         box-shadow: none;
-      }
-
-
     }
-    #start-time {
-      position: absolute;
-      text-align: center;
-      top: 89vh;
-      left: 16vw;
+    @include tablet {
+        height: 100px;
+        width: 255px;
+        font-size: 2em;
+        left: 32vw;
     }
+    @include desktop {
+      height: 90px;
+      width: 219px;
+      font-size: 2em;
+      left: 36vw;
+      top: 63vh;
+    }
+}
+
+#start-time {
+    position: absolute;
+    text-align: center;
+    top: 89vh;
+    left: 16vw;
+    @include tablet {
+        font-size: 2em;
+        left: 20vw;
+    }
+    @include desktop {
+      font-size: 2em;
+      font-style: italic;
+      left: 35vw;
+      top: 87vh;
+    }
+}

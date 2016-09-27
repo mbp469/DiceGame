@@ -45,19 +45,19 @@ var game = {
     parseTimeString: function(date) {
         var year = "" + date.getYear();
         year = "20" + year.slice(1);
-        var day = date.getDate();
+        var day = "" + date.getDate();
         if (day.length === 1){
           day = "0" + day;
         };
-        var month = date.getMonth() + 1;
+        var month = "" + date.getMonth() + 1;
         if (month.length === 1) {
           month = "0" + day;
         }
-        var hour = date.getHours();
+        var hour = "" + date.getHours();
         if (hour.length === 1) {
           hour = "0" + hour;
         }
-        var minutes = date.getMinutes();
+        var minutes = "" + date.getMinutes();
         if (minutes.length === 1) {
           minutes = "0" + minutes;
         }
@@ -113,7 +113,7 @@ var game = {
     },
     win: function() {
         this.values.round.roundEnd = this.getTime();
-        var winMessage = "It took you " + this.values.round.roundDiceRolls + " rolls and " + this.getDiff() + " seconds.)";
+        var winMessage = "(It took you " + this.values.round.roundDiceRolls + " rolls and " + this.getDiff() + " seconds.)";
         this.regions.noticeArea.innerHTML = "Winner!";
         this.regions.triesCount.innerHTML = winMessage;
         this.regions.triesCount.style.visibility = "visible";
