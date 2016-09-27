@@ -30,6 +30,8 @@ var game = {
       this.regions.gameStart.innerHTML = this.values.dateMessage;
       this.values.round.firstRoll = "ROLL ME";
       this.values.round.secondRoll = "ROLL ME";
+      this.regions.firstDi.innerHTML = "ROLL ME";
+      this.regions.secondDi.innerHTML = "ROLL ME";
       this.values.gameRounds = [];
       this.regions.noticeArea = "Roll Dice to Play.";
       this.regions.rollBtn.innerHTML = "Roll Dice.";
@@ -41,11 +43,24 @@ var game = {
         return date;
     },
     parseTimeString: function(date) {
-        var year = "2" + date.getYear();
+        var year = "" + date.getYear();
+        year = "20" + year.slice(1);
         var day = date.getDate();
+        if (day.length === 1){
+          day = "0" + day;
+        };
         var month = date.getMonth() + 1;
+        if (month.length === 1) {
+          month = "0" + day;
+        }
         var hour = date.getHours();
+        if (hour.length === 1) {
+          hour = "0" + hour;
+        }
         var minutes = date.getMinutes();
+        if (minutes.length === 1) {
+          minutes = "0" + minutes;
+        }
         return ("Game Started " + year + '-' + month + '-' + day + ' at ' + hour + ':' + minutes);
 
     },

@@ -29,10 +29,14 @@
 
 .di {
   position: absolute;
+  text-align: center;
   border: 2px solid black;
   height: 80px;
   width: 80px;
-  top: 19vh; }
+  top: 29vh;
+  box-shadow: 10px 20px 5px gray;
+  border-radius: 7px;
+  font-size: 1.75em; }
 
 #di-1 {
   left: 14vw; }
@@ -41,14 +45,20 @@
   right: 14vw; }
 
 #roll {
+  font-size: 1em;
   position: absolute;
   border-radius: 18px;
   background: gray;
   color: white;
-  height: 76px;
+  height: 66px;
   width: 155px;
-  top: 71vh;
-  left: 24vw; }
+  top: 65vh;
+  left: 24vw;
+  box-shadow: 4px 8px 2px black;
+  text-align: center; }
+  #roll:active {
+    transform: translate(20px 20px);
+    box-shadow: none; }
 
 #start-time {
   position: absolute;
