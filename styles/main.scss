@@ -59,6 +59,7 @@
     border-radius: 7px;
     font-size: 1.75em;
     text-shadow: 4px 3px 5px gray;
+    transition: transform 1s linear;
     @include tablet {
         height: 150px;
         width: 150px;
@@ -72,14 +73,14 @@
 }
 
 #di-1 {
-    left: 24vw;
+    left: 13vw;
     @include desktop {
       left: 20vw;
     }
 }
 
 #di-2 {
-    right: 24vw;
+    right: 16vw;
     @include desktop {
       right: 20vw;
     }

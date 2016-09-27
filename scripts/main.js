@@ -20,10 +20,10 @@ var game = {
         //adds the rollBtn to a click event listener and binds it to the game object
         this.regions.rollBtn.addEventListener('click', this.rollDice.bind(this));
         this.reset();
-        this.regions.firstDi.innerHTML = this.values.round.firstRoll;
-        this.regions.secondDi.innerHTML = this.values.round.secondRoll;
     },
     reset: function() {
+      this.regions.firstDi.innerHTML = this.values.round.firstRoll;
+      this.regions.secondDi.innerHTML = this.values.round.secondRoll;
       this.regions.triesCount.style.visibility="hidden";
       this.values.round.roundStart = this.getTime();
       this.values.round.roundDiceRolls = 1; //sets dice rolls for this round to 0;
@@ -37,7 +37,7 @@ var game = {
       this.regions.rollBtn.innerHTML = "Roll Dice.";
     },
     getTime: function() {
-        console.log("In funtion getStartTime()");
+        console.log("In function getStartTime()");
         var date = new Date();
         this.values.dateMessage = this.parseTimeString(date);
         return date;
@@ -82,12 +82,20 @@ var game = {
         return (this.values.round.roundEnd - this.values.round.roundStart) / 1000;
         console.log(this.values.round.difference);
     },
+    // transformDice: function() {
+    //   console.log(this.regions.secondDi);
+    //   document.getElementById('di-2').style.transform="rotate(360deg)";
+    //   document.getElementById('di-1').style.transform="rotate(360deg)";
+    //   document.getElementById('di-2').style.transform="rotate(-360deg)";
+    //   document.getElementById('di-1').style.transform="rotate(-360deg)";
+    //
+    // },
     rollDice: function() {
+      // this.transformDice();
       if(this.values.won === true) {
         console.log("Inside the rollDice function");
         this.reset();
         this.values.won = false;
-
             } else {
             this.values.round.firstRoll = Math.floor(Math.random() * 6) + 1; //generate first random number and assign to variable
             this.values.round.secondRoll = Math.floor(Math.random() * 6) + 1; //generate second random number and assign to variable

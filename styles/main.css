@@ -52,7 +52,8 @@
   box-shadow: 10px 20px 5px gray;
   border-radius: 7px;
   font-size: 1.75em;
-  text-shadow: 4px 3px 5px gray; }
+  text-shadow: 4px 3px 5px gray;
+  transition: transform 1s linear; }
   @media only screen and (min-width: 768px) {
     .di {
       height: 150px;
@@ -65,13 +66,13 @@
       font-size: 3em; } }
 
 #di-1 {
-  left: 24vw; }
+  left: 13vw; }
   @media only screen and (min-width: 1024px) {
     #di-1 {
       left: 20vw; } }
 
 #di-2 {
-  right: 24vw; }
+  right: 16vw; }
   @media only screen and (min-width: 1024px) {
     #di-2 {
       right: 20vw; } }
