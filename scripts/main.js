@@ -16,81 +16,99 @@ var game = {
         this.regions.gameStart = document.getElementById('start-time');
     },
     init: function() {
-      this.defineRegions(); //gets the HTML ready to receive
-      this.regions.triesCount.style="visibility:hidden";
-      //adds the rollBtn to a click event listener and binds it to the game object
-      this.regions.rollBtn.addEventListener('click',this.rollDice.bind(this));
+        this.defineRegions(); //gets the HTML ready to receive
+        //adds the rollBtn to a click event listener and binds it to the game object
+        this.regions.rollBtn.addEventListener('click', this.rollDice.bind(this));
+        this.reset();
+        this.regions.firstDi.innerHTML = this.values.round.firstRoll;
+        this.regions.secondDi.innerHTML = this.values.round.secondRoll;
+    },
+    reset: function() {
+      this.regions.triesCount.style.visibility="hidden";
       this.values.round.roundStart = this.getTime();
-      this.values.round.roundDiceRolls = 0;//sets dice rolls for this round to 0;
-      this.regions.gameStart = this.values.dateMessage;
+      this.values.round.roundDiceRolls = 1; //sets dice rolls for this round to 0;
+      this.regions.gameStart.innerHTML = this.values.dateMessage;
+      this.values.round.firstRoll = "ROLL ME";
+      this.values.round.secondRoll = "ROLL ME";
+      this.values.gameRounds = [];
+      this.regions.noticeArea = "Roll Dice to Play.";
+      this.regions.rollBtn.innerHTML = "Roll Dice.";
     },
     getTime: function() {
-      console.log("In funtion getStartTime()");
-      var date = new Date();
-      var year = date.getYear();
-      var day = date.getDate();
-      var month = date.getMonth();
-      var hour = date.getHours();
-      var minutes = date.getMinutes();
-      this.values.dateMessage = "Game Started " + year + '-' + month + '-' + day + ' at ' + hour + ':' + minutes;
-      return date;
+        console.log("In funtion getStartTime()");
+        var date = new Date();
+        this.values.dateMessage = this.parseTimeString(date);
+        return date;
+    },
+    parseTimeString: function(date) {
+        var year = "2" + date.getYear();
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var hour = date.getHours();
+        var minutes = date.getMinutes();
+        return ("Game Started " + year + '-' + month + '-' + day + ' at ' + hour + ':' + minutes);
+
     },
     /* holds the values that will be needed in the HTML */
     values: {
-      gameRounds: [], //hold each round object
-      round: { //the round object to be stored in gameRounds[]
-          roundStart: 1,
-          roundDiceRolls: 1,
-          firstRoll: 0,
-          secondRoll: 0,
-          roundEnd: 25,
-      },
-      dateMessage: 'date message',
+        gameRounds: [], //hold each round object
+        round: { //the round object to be stored in gameRounds[]
+            roundStart: 1,
+            roundDiceRolls: 1,
+            firstRoll: 'ROLL ME',
+            secondRoll: 'ROLL ME',
+            roundEnd: 25,
+        },
+        dateMessage: 'date message',
+        won: false
     },
     getDiff: function() {
-      console.log(this.values.round.roundEnd + ',' + this.values.round.roundStart);
-      return this.values.round.roundEnd - this.values.round.roundStart;
-      console.log(this.values.round.difference);
+        console.log(this.values.round.roundEnd + ',' + this.values.round.roundStart);
+        return (this.values.round.roundEnd - this.values.round.roundStart) / 1000;
+        console.log(this.values.round.difference);
     },
     rollDice: function() {
+      if(this.values.won === true) {
         console.log("Inside the rollDice function");
-        /* this function should generate a random number
-          for each di and display on the dice. It should
-            also store the round by calling addRound */
-        this.values.round.firstRoll = Math.floor(Math.random() * 6) + 1;//generate first random number and assign to variable
-        this.values.round.secondRoll = Math.floor(Math.random() * 6) + 1;//generate second random number and assign to variable
-        this.updateHTML('firstDi', 'firstRoll' );
-        this.updateHTML('secondDi', 'secondRoll');
-        this.testRollResults();
-        this.addRound();//stores the round in gameRounds array
-        this.values.round.roundDiceRolls++;
+        this.reset();
+        this.values.won = false;
+
+            } else {
+            this.values.round.firstRoll = Math.floor(Math.random() * 6) + 1; //generate first random number and assign to variable
+            this.values.round.secondRoll = Math.floor(Math.random() * 6) + 1; //generate second random number and assign to variable
+            this.updateHTML('firstDi', 'firstRoll');
+            this.updateHTML('secondDi', 'secondRoll');
+            this.testRollResults();
+            this.addRound(); //stores the round in gameRounds array
+            this.values.round.roundDiceRolls++;
+          }
     },
     testRollResults: function() {
         console.log("Inside the processRollResults function");
         /* this function should test the sum of firstDi and secondDi,
           then print either "Try Again" or "Winner" plus stats */
-          var sum = parseInt(this.values.round.firstRoll) + parseInt(this.values.round.secondRoll);
-          console.log(sum);
-          if(sum === 7 || sum === 11) {
-            this.win();//update everything based on being a winner
-          } else {
-            this.keepGoing();//continue game
-          }
+        var sum = parseInt(this.values.round.firstRoll) + parseInt(this.values.round.secondRoll);
+        console.log(sum);
+        if (sum === 7 || sum === 11) {
+          this.values.won = true;
+          this.win(); //update everything based on being a winner
+        } else {
+            this.keepGoing(); //continue game
+        }
     },
     win: function() {
-      console.log("in the win if-statement");
-      this.values.round.roundEnd = this.getTime();
-      var winMessage = "It took you " + this.values.round.roundDiceRolls + " rolls and " + this.getDiff() + " seconds.)";
-      this.regions.noticeArea.innerHTML = "Winner!";
-      this.regions.triesCount.innerHTML = winMessage;
-      this.regions.triesCount.style.visibility="visible";
-
+        this.values.round.roundEnd = this.getTime();
+        var winMessage = "It took you " + this.values.round.roundDiceRolls + " rolls and " + this.getDiff() + " seconds.)";
+        this.regions.noticeArea.innerHTML = "Winner!";
+        this.regions.triesCount.innerHTML = winMessage;
+        this.regions.triesCount.style.visibility = "visible";
+        this.regions.rollBtn.innerHTML = "Click to Play Again.";
     },
     keepGoing: function() {
-      this.regions.noticeArea.innerHTML = "Try Again";
+        this.regions.noticeArea.innerHTML = "Try Again";
     },
     addRound: function() {
-      this.values.gameRounds.push(this.values.round);//add the values.round object to values.gameRounds[]
+        this.values.gameRounds.push(this.values.round); //add the values.round object to values.gameRounds[]
     },
     updateHTML: function(targetElement, newValue) {
         /* this function should replace the HTML in the
@@ -98,7 +116,6 @@ var game = {
           items in the round object */
         this.regions[targetElement].innerHTML = this.values.round[newValue];
     },
-
 }
 
 game.init();
